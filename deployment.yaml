@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netcore-app
+  namespace: devops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netcore-app
+  template:
+    metadata:
+      labels:
+        app: netcore-app
+    spec:
+      containers:
+      - name: netcore-container
+        image: netcoreapp 
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+

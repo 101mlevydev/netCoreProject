@@ -14,15 +14,4 @@ pipeline {
                 sh 'dotnet restore'
                 sh 'dotnet build --configuration Release'
             }
-        }
-        stage('Deploy') {
-            steps {
-                script {
-                    sh "kubectl create namespace ${K8S_NAMESPACE} || true"
-                    sh "kubectl apply -f deployment.yaml --namespace=${K8S_NAMESPACE}"
-                }
-            }
-        }
-    }
-}
-
+  
